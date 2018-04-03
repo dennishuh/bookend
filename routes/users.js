@@ -67,15 +67,19 @@ router.post("/register", (req, res) => {
             const user = new Users(newUser);
             user
               .save()
-              .then(user => {
+              .then(() => {
+                return user.generateAuthToken();
+              })
+              .then((token) => {
                 req.flash(
                   "success_msg",
                   "You are now registered and can log in"
                 );
-                res.redirect("/users/login");
+                res.header('x-auth', token).redirect("/users/login");
               })
               .catch(err => {
                 console.log("err", err);
+                res.status(400).send(e);
                 return;
               });
           });

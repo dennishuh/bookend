@@ -10,6 +10,8 @@ const passport = require('passport');
 const moment = require('moment');
 const keys = require('./config/keys');
 
+const { ensureAuthenticated } = require('./helpers/auth');
+
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -49,9 +51,11 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(methodOverride("_method"));
+
 app.use(session({
-  secret: 'secret',
+  secret: 'super secret key',
   resave: true,
+  cookie: { maxAge: 24*60*60*1000 },
   saveUninitialized: true
 }));
 
@@ -68,18 +72,22 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+
 app.get("/", (req, res) => {
-  const data = {
-    title: "Welcome!"
-  };
-  res.render("index", data);
+  if (req.isAuthenticated()) {
+    res.redirect('/books');
+  } else {
+    const data = {
+      title: "Welcome!"
+    };
+    res.render("index", data);
+  }
 });
 
 app.get("/about", (req, res) => {
   res.render("about");
 });
-
-
 
 // Use routes
 app.use('/books', books);
