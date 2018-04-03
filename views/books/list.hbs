@@ -1,0 +1,29 @@
+{{> _searchbar}}
+
+{{#each books}}
+  <div class="card card-body mb-3 {{#if finishedDate}}finished-book{{/if}}">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="float-left cover-container mr-3" style="background-image: url({{cover}})"></div>
+        <h4>{{#if finishedDate}}<i class="material-icons grade">grade</i>{{/if}} {{title}}</h4>
+        <p>Started: {{moment startedDate 'MM/DD/YYYY'}}</p>
+        {{#if finishedDate}}
+          <p class="mb-0">Finished: {{moment finishedDate 'MM/DD/YYYY'}}</p>
+          <p>Year: {{finishedYear}}</p>
+        {{/if}}
+
+        <form action="/books/{{id}}?_method=PUT" method="post" class="finish-form">
+          <input type="hidden" name="_method" value="PUT" />
+          <button class="btn btn-outline-info btn-sm btn-inline mb-0" type="submit">Finish Reading</button>
+        </form>
+        <form class="delete-book" method="post" action="/books/{{id}}?_method=DELETE">
+          <input type="hidden" name="_method" value="DELETE" />
+          <button class="btn" type="submit"><i class="material-icons">clear</i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <p>No Books started yet</p>
+{{/each}}

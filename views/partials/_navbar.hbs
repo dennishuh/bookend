@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <i class="material-icons format-align-justify">format_align_justify</i> bookend
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon" />
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <div class="navbar-nav ml-auto">
+
+        {{#if user}}
+          <div class="nav-item">
+            <a href="/users/logout" class="nav-link">Logout</a>
+          </div>
+          <div class="nav-item">
+            <a href="/books/" class="nav-link"><span class="oi oi-book"></span> My Books</a>
+          </div>
+        {{else}}
+          <div class="nav-item">
+            <a href="/users/login" class="nav-link">Login</a>
+          </div>
+          <div class="nav-item">
+            <a href="/users/register" class="nav-link">Register</a>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</nav>
