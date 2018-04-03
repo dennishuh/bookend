@@ -1,5 +1,7 @@
 {{> _searchbar}}
-
+<div class="alert alert-light" role="alert">
+  Total books: {{totalBooks}}
+</div>
 {{#each books}}
   <div class="card card-body mb-3 {{#if finishedDate}}finished-book{{/if}}">
     <div class="row">
@@ -7,11 +9,10 @@
 
         <div class="float-left cover-container mr-3" style="background-image: url({{cover}})"></div>
         <h4>{{#if finishedDate}}<i class="material-icons grade">grade</i>{{/if}} {{title}}</h4>
-        <p>Started: {{moment startedDate 'MM/DD/YYYY'}}</p>
-        {{#if finishedDate}}
-          <p class="mb-0">Finished: {{moment finishedDate 'MM/DD/YYYY'}}</p>
-          <p>Year: {{finishedYear}}</p>
-        {{/if}}
+        <p class="start-end-dates mb-0">Started: {{moment startedDate 'MM/DD/YYYY'}}{{#if finishedDate}}
+          <i class="material-icons keyboard_arrow_right">keyboard_arrow_right</i> Finished: {{moment finishedDate 'MM/DD/YYYY'}}
+        {{/if}}</p>
+
 
         <form action="/books/{{id}}?_method=PUT" method="post" class="finish-form">
           <input type="hidden" name="_method" value="PUT" />

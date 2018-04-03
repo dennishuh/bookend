@@ -6,7 +6,7 @@ const { Users } = require("../models/users");
 
 // User Login Route
 router.get("/login", (req, res) => {
-  res.render("users/login");
+  res.render("users/login", {containerClass: 'login'});
 });
 
 router.post('/login', (req, res, next) => {
@@ -24,7 +24,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get("/register", (req, res) => {
-  res.render("users/register");
+  res.render("users/register", {containerClass: 'login'});
 });
 
 router.post("/register", (req, res) => {

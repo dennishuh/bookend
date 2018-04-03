@@ -65,7 +65,8 @@ router.get("/", ensureAuthenticated, (req, res) => {
   Books.find({user: req.user.id})
     .sort({ date: "desc" })
     .then(books => {
-      res.render("books/list", { books });
+      const totalBooks = books.length;
+      res.render("books/list", { books, totalBooks, containerClass: 'mybooks-list' });
     });
 });
 
@@ -73,11 +74,8 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
   Books.findById(req.params.id)
     .then(book => {
       const now = new Date();
-      console.log('now', now);
-      console.log(now.getFullYear());
       book.finishedDate = now;
       book.finishedYear = now.getFullYear();
-      console.log('book.finishedYear: ' + book.finishedYear);
       return book.save()
     })
     .then(book => {

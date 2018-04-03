@@ -110,8 +110,25 @@ body {
   color: #17a2b8;
 }
 
+.finished-book h4 small {
+  font-size: 14px;
+  color: #666666;
+}
+
 .finished-book .grade {
   font-size: 26px;
   position: relative;
   top: 4px;
+}
+
+.start-end-dates i {
+  font-size: 14px;
+  position: relative;
+  top: 1px;
+}
+
+.mybooks-list .alert {
+  text-align: right;
+  margin-bottom: 0;
+  font-size: 14px;
 }
