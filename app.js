@@ -70,7 +70,7 @@ app.use(methodOverride("_method"));
 app.use(session({
   secret: 'super secret key',
   resave: true,
-  cookie: { maxAge: 24*60*60*1000 },
+  cookie: { maxAge: 168*60*60*1000 },
   saveUninitialized: true
 }));
 
@@ -87,8 +87,6 @@ app.use(function(req, res, next) {
   res.locals.prod = process.env.NODE_ENV === 'production' ? true : false;
   next();
 });
-
-
 
 app.get("/", (req, res) => {
   if (req.isAuthenticated()) {
