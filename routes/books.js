@@ -65,6 +65,23 @@ router.get("/", ensureAuthenticated, (req, res) => {
   Books.find({user: req.user.id})
     .sort({ date: "desc" })
     .then(books => {
+      // const yearsRead = [
+      //   2018: [
+      //
+      //   ]
+      // ];
+      // let year = new Date.getFullYear();
+      //
+      // if (let i=0; i < book.length; i++) {
+      //   if (book[i].finishedYear === year) {
+      //
+      //   }
+      // }
+      // books.map(book => {
+      //   if (book.finishedYear === year) {
+      //
+      //   }
+      // })
       const totalBooks = books.length;
       res.render("books/list", { books, totalBooks, containerClass: 'mybooks-list' });
     });
