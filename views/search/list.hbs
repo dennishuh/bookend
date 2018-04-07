@@ -1,33 +1,30 @@
 {{> _searchbar}}
-
 <h2>Search Results</h2>
 <div class="row search-results">
   {{#each searchItems}}
-    <div class="col-xs-12 col-md-6 col-lg-4 mb-4">
-      <div class="card book-viewer">
-        <div class="row">
-          <div class="col-4 images">
-            <div class="img-container" style="background-image: url({{volumeInfo.imageLinks.thumbnail}})"></div>
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <i class="material-icons check-circle">check_circle</i>
-              <h5 class="card-title mb-0">{{volumeInfo.title}}</h5>
-              {{#each volumeInfo.authors}}
-                <small>{{this}}</small>
-              {{/each}}
-              <p class="card-text">{{{searchInfo.textSnippet}}}</p>
-              <form class="save-book-form" method="POST" action="/books/add">
-                <input type="hidden" name="title" value="{{volumeInfo.title}}" />
-                <input type="hidden" name="cover" value="{{volumeInfo.imageLinks.thumbnail}}" />
-                <button class="btn btn-outline-dark start-reading-btn" data-book-info='{"title": "{{volumeInfo.title}}", "authors": "{{volumeInfo.authors}}", "cover": "{{volumeInfo.imageLinks.thumbnail}}"}'><i class="material-icons">library_add</i> Start reading</button>
-
-              <button class="btn btn-success saved-book-btn">Book saved to My Books</button>
-            </form>
-            </div>
-          </div>
-        </div>
+  <div class="col s12">
+    <div class="card horizontal valign-wrapper">
+      <div class="card-image">
+        <img src="{{volumeInfo.imageLinks.thumbnail}}">
       </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h5 class="header">{{tvolumeInfo.title}} {{#each volumeInfo.authors}}
+            <small>{{this}} </small>
+          {{/each}}</h5>
+
+          <p class="text-snippet">{{{truncate searchInfo.textSnippet 150}}}</p>
+          <form class="save-book-form" method="POST" action="/books/add">
+            <input type="hidden" name="title" value="{{volumeInfo.title}}" />
+            <input type="hidden" name="cover" value="{{volumeInfo.imageLinks.thumbnail}}" />
+            <button type="submit" class="waves-effect waves-light start-reading-btn btn" data-book-info='{"title": "{{volumeInfo.title}}", "authors": "{{volumeInfo.authors}}", "cover": "{{volumeInfo.imageLinks.thumbnail}}"}'>
+              <i class="fal fa-book"></i> Start reading</button>
+        </form>
+        </div>
+
+      </div>
+
     </div>
+  </div>
   {{/each}}
 </div>

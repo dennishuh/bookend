@@ -33,6 +33,21 @@ hbs.registerHelper('moment', function(date, format) {
   return moment(date).format(format);
 });
 
+hbs.registerHelper('truncate', function(str, len) {
+  if (!str) {
+    return;
+  }
+    if (str.length > len && str.length > 0) {
+      console.log('truncating');
+      var new_str = str + " ";
+      new_str = str.substr(0, len);
+      new_str = str.substr(0, new_str.lastIndexOf(" "));
+      new_str = (new_str.length > 0) ? new_str : str.substr(0, len);
+      return new_str + '...';
+    }
+    return str;
+  })
+
 // Use `.hbs` for extensions and find partials in `views/partials`.
 app.engine(
   "hbs",
@@ -69,6 +84,7 @@ app.use(function(req, res, next) {
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
   res.locals.user = req.user || null;
+  res.locals.prod = process.env.NODE_ENV === 'production' ? true : false;
   next();
 });
 

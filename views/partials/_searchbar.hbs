@@ -1,9 +1,12 @@
-
-  <form class="form" action="/list/" method="POSt">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" name="terms" placeholder="Search by Book Title" aria-label="Book Search" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="butmit">Submit</button>
+<div class="row">
+  <form action="/list" method="POST" class="col s12" id="search-form">
+    <div class="row valign-wrapper">
+      <div class="input-field col s9">
+        <input placeholder="Search by Title/Author" id="search" type="text" class="validate" name="terms" aria-label="Book Search" />
+      </div>
+      <div class="col s3">
+        <button type="submit" class="waves-effect waves-light btn">Submit</button>
       </div>
     </div>
   </form>
+</div>
