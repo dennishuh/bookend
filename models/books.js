@@ -30,6 +30,9 @@ const BookSchema = new Schema({
   },
   finishedYear: {
     type: Number
+  },
+  note: {
+    type: String
   }
 });
 

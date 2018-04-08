@@ -83,15 +83,26 @@ router.get("/", ensureAuthenticated, (req, res) => {
 });
 
 router.put("/:id", ensureAuthenticated, (req, res) => {
+  const note = req.body.note || undefined;
   Books.findById(req.params.id)
     .then(book => {
-      const now = new Date();
-      book.finishedDate = now;
-      book.finishedYear = now.getFullYear();
+      if (note) {
+        book.note = note;
+      } else {
+        const now = new Date();
+        book.finishedDate = now;
+        book.finishedYear = now.getFullYear();
+      }
       return book.save()
     })
     .then(book => {
-      req.flash('success_msg', 'Book Finished!');
+      let msg = '';
+      if (note) {
+        msg = 'Note added!';
+      } else {
+        msg = 'Book finished!';
+      }
+      req.flash('success_msg', msg);
       res.redirect('/books')
     })
     .catch(err => console.log(err))

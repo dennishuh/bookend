@@ -224,3 +224,19 @@ nav .brand-logo {
   position: absolute;
   line-height: 0;
 }
+
+.add-note {
+  position: absolute;
+  display: block;
+  text-align: right;
+  bottom: 20px;
+  right: 20px;
+}
+
+#comment-form {
+  display: none;
+}
+
+.close-note-form {
+  color: red;
+}

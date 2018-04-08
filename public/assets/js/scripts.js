@@ -15,7 +15,7 @@ $(document).ready(function() {
   const $finishedBook = $('.finished-book');
   const $currentBook = $('.current-book');
 
-  $('.mybooks-list').on('click', '.total-read a', function(e) {
+  $('.mybooks-list').on('click', 'a', function(e) {
     e.preventDefault();
     const $this = $(this);
 
@@ -32,6 +32,16 @@ $(document).ready(function() {
     if ($this.hasClass('total-read')) {
       $finishedBook.show();
       $currentBook.show();
+    }
+
+    if ($this.hasClass('add-note')) {
+      $this.hide();
+      $this.siblings('#comment-form').show();
+    }
+
+    if ($this.hasClass('close-note-form')) {
+      $('.add-note').show();
+      $this.closest('form').hide();
     }
   })
 })

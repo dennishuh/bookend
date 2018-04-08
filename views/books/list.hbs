@@ -27,6 +27,20 @@
           <input type="hidden" name="_method" value="DELETE" />
           <button class="btn pink lighten-1" type="submit"><i class="fal fa-times"></i></button>
         </form>
+        {{#if finishedDate}}{{#unless note}}<a href="#" class="add-note">Add Note <i class="fal fa-comment-alt-lines" data-fa-transform="grow-4"></i></a>
+        <form method="POST" action="/books/{{id}}?_method=PUT" id="comment-form">
+          <a href="#" class="close-note-form right"><i class="fal fa-times"></i></a>
+          <input type="hidden" name="_method" value="PUT" />
+          <!-- <label for="review">Review</label> -->
+
+          <textarea placeholder="Add a note for future reference" name="note" class="materialize-textarea"></textarea>
+          <button type="submit" class="btn btn-outline-info btn-small right">Add Note</button>
+        </form>
+        {{/unless}}
+        {{/if}}
+        {{#if note}}
+          <p class="notes"><i class="fal fa-comment-alt-lines"></i> {{note}}</p>
+        {{/if}}
       </div>
 
     </div>
