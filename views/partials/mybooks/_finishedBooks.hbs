@@ -12,7 +12,7 @@
         </p>
 
         <div class="chip">
-          <i class="fal fa-clock"></i> It took you {{timeDifference startedDate finishedDate}} to finish
+          <i class="fal fa-clock"></i> Finished in {{timeDifference startedDate finishedDate}}
         </div>
 
         <form class="delete-book" method="post" action="/books/{{id}}?_method=DELETE">
@@ -21,7 +21,7 @@
         </form>
 
         {{#unless note}}
-          <a href="#" class="add-note">Add Note <i class="fal fa-comment-alt-lines" data-fa-transform="grow-4 right-6"></i></a>
+          <a href="#" class="add-note right">Add Note <i class="fal fa-comment-alt-lines" data-fa-transform="grow-4 right-6"></i></a>
 
           <form method="POST" action="/books/{{id}}?_method=PUT" id="comment-form">
             <a href="#" class="close-note-form right"><i class="fal fa-times"></i></a>

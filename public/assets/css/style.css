@@ -212,7 +212,7 @@ nav .brand-logo {
 }
 
 .mybooks-list .card.horizontal .card-image {
-  max-width: 30%;
+  max-width: 20%;
 }
 
 @media screen and (min-width: 480px) {
@@ -231,8 +231,7 @@ nav .brand-logo {
 }
 
 .add-note {
-  position: absolute;
-  display: block;
+  display: inline-block;
   text-align: right;
   bottom: 20px;
   right: 20px;
