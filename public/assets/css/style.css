@@ -198,6 +198,10 @@ nav .brand-logo {
   display: inline;
 }
 
+.total-read a {
+  color: #466C7F;
+}
+
 .total-read .fa {
   color: #757575;
 }

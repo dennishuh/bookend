@@ -67,9 +67,7 @@ router.get("/", ensureAuthenticated, (req, res) => {
     .then(books => {
       const currentlyReading = []
       const finishedBooks = books.filter(book => {
-        console.log('book.finishedDate', book.finishedDate)
         if (!book.finishedDate) {
-          console.log('!finishedDate')
           currentlyReading.push(book)
         } else {
           return book;

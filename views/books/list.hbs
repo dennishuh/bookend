@@ -1,15 +1,15 @@
 {{> _searchbar}}
 
 <ul class="total-read">
-  <li>Current: {{currentTotal}}</li>
-  <li><i class="fal fa-minus" data-fa-transform="rotate-90 shrink-8"></i>
-  <li>Finished: {{finishedTotal}}</li>
-  <li><i class="fal fa-minus" data-fa-transform="rotate-90 shrink-8"></i>
-  <li>Total: {{totalBooks}}</li>
-</div>
+  <li><a href="#" class="currently-reading">Current: {{currentTotal}}</a></li>
+  <li><i class="fal fa-minus" data-fa-transform="rotate-90 shrink-8"></i></li>
+  <li><a href="#" class="finished-reading">Finished: {{finishedTotal}}</a></li>
+  <li><i class="fal fa-minus" data-fa-transform="rotate-90 shrink-8"></i></li>
+  <li><a href="#" class="total-read">Total: {{totalBooks}}</a></li>
+</ul>
 {{#each books}}
 <div class="col s12">
-  <div class="card horizontal {{#if finishedDate}}finished-book{{/if}}">
+  <div class="card horizontal {{#if finishedDate}}finished-book{{else}}current-book{{/if}}">
     <div class="card-image">
       <img src="{{cover}}" alt="{{title}}">
     </div>
