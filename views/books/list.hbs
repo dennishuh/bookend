@@ -12,7 +12,7 @@
     <h5>Currently Reading</h5>
   </div>
   {{#each currentlyReading}}
-    {{> _mybooks}}
+    {{> mybooks/_currentBooks}}
   {{else}}
     <p>You haven't started a new book recently.</p>
   {{/each}}
@@ -23,7 +23,7 @@
     <h5>Finished Reading</h5>
   </div>
   {{#each finishedBooks}}
-    {{> _mybooks}}
+    {{> mybooks/_finishedBooks}}
   {{else}}
     <p>No finished books yet</p>
   {{/each}}

@@ -11,6 +11,11 @@ h5 {
   background-color: #3399CC !important;
 }
 
+.chip {
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+
 .card .card-content {
     padding: 12px 24px;
     border-radius: 0 0 2px 2px;
@@ -244,4 +249,8 @@ nav .brand-logo {
 
 .close-note-form {
   color: red;
+}
+
+.notes {
+  padding-left: 10px;
 }

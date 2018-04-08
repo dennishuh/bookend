@@ -92,6 +92,7 @@ router.put("/:id", ensureAuthenticated, (req, res) => {
         const now = new Date();
         book.finishedDate = now;
         book.finishedYear = now.getFullYear();
+        book.timeDifference = book.finishedDate - book.startedDate;
       }
       return book.save()
     })

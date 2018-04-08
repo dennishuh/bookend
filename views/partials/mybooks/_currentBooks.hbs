@@ -1,0 +1,26 @@
+<div class="col s12">
+  <div class="card horizontal">
+    <div class="card-image">
+      <img src="{{cover}}" alt="{{title}}">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <h5 class="header">{{title}}</h5>
+
+        <p class="start-end-dates ">
+          Started: {{moment startedDate 'MM/DD/YYYY'}}
+        </p>
+
+        <form action="/books/{{id}}?_method=PUT" method="post" class="finish-form">
+          <input type="hidden" name="_method" value="PUT" />
+          <button class="btn btn-outline-info btn-small btn-inline mb-0" type="submit">Finish Reading</button>
+        </form>
+
+        <form class="delete-book" method="post" action="/books/{{id}}?_method=DELETE">
+          <input type="hidden" name="_method" value="DELETE" />
+          <button class="btn pink lighten-1" type="submit"><i class="fal fa-times"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

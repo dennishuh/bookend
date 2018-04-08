@@ -31,6 +31,9 @@ const BookSchema = new Schema({
   finishedYear: {
     type: Number
   },
+  timeDifference: {
+    type: Date
+  },
   note: {
     type: String
   }

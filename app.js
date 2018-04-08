@@ -33,6 +33,10 @@ hbs.registerHelper('moment', function(date, format) {
   return moment(date).format(format);
 });
 
+hbs.registerHelper('timeDifference', function(fromDate, toDate) {
+  return moment(toDate).from(fromDate, true);
+})
+
 hbs.registerHelper('truncate', function(str, len) {
   if (!str) {
     return;
