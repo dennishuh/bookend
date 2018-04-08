@@ -65,25 +65,22 @@ router.get("/", ensureAuthenticated, (req, res) => {
   Books.find({user: req.user.id})
     .sort({ date: "desc" })
     .then(books => {
-      // const yearsRead = [
-      //   2018: [
-      //
-      //   ]
-      // ];
-      // let year = new Date.getFullYear();
-      //
-      // if (let i=0; i < book.length; i++) {
-      //   if (book[i].finishedYear === year) {
-      //
-      //   }
-      // }
-      // books.map(book => {
-      //   if (book.finishedYear === year) {
-      //
-      //   }
-      // })
+      const currentlyReading = []
+      const finishedBooks = books.filter(book => {
+        console.log('book.finishedDate', book.finishedDate)
+        if (!book.finishedDate) {
+          console.log('!finishedDate')
+          currentlyReading.push(book)
+        } else {
+          return book;
+        };
+      });
+      const currentBooks = [...currentlyReading, ...finishedBooks];
       const totalBooks = books.length;
-      res.render("books/list", { books, totalBooks, containerClass: 'mybooks-list' });
+      const currentTotal = currentlyReading.length || 0;
+      const finishedTotal = finishedBooks.length || 0;
+
+      res.render("books/list", { books: currentBooks, finishedTotal, currentTotal, totalBooks, containerClass: 'mybooks-list' });
     });
 });
 

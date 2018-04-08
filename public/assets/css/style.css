@@ -2,6 +2,15 @@ body {
   font-family: "Josefin Sans", "Helvetica-Neue", Arial, sans-serif;
 }
 
+
+h5 {
+  font-size: 1.50rem;
+}
+
+.btn {
+  background-color: #3399CC !important;
+}
+
 .card .card-content {
     padding: 12px 24px;
     border-radius: 0 0 2px 2px;
@@ -16,6 +25,10 @@ body {
 }
 
 .navbar-brand {
+}
+
+nav .brand-logo {
+  font-size: 1.5rem;
 }
 
 .navbar-brand .oi {
@@ -115,13 +128,15 @@ body {
 
 .delete-book {
   position: absolute;
-  top: -14px;
-    right: -1px;
+  top: 0;
+  right: 0;
 }
 
 .delete-book .btn {
   padding: .2rem .4rem 0rem;
   border-radius: 2px;
+  height: 24px;
+  line-height: 0;
 }
 
 .delete-book .btn:hover {
@@ -138,15 +153,19 @@ body {
   font-size: 14px;
 }
 
+.finished-book {
+  border-top: 6px solid #4db6ac;
+}
+
 .finished-book .finish-form {
   display: none;
 }
 
-.finished-book h4 {
-  color: #17a2b8;
+.finished-book h5 {
+  color: #546e7a;
 }
 
-.finished-book h4 small {
+.finished-book h5 small {
   font-size: 14px;
   color: #666666;
 }
@@ -158,8 +177,9 @@ body {
 }
 
 .start-end-dates {
-  min-height: 68px;
+  padding-bottom: 10px;
 }
+
 
 .start-end-dates i {
   font-size: 14px;
@@ -168,8 +188,35 @@ body {
 
 }
 
-.mybooks-list .total-read {
+.total-read {
   text-align: right;
   margin-bottom: 0;
   font-size: 14px;
+}
+
+.total-read li {
+  display: inline;
+}
+
+.total-read .fa {
+  color: #757575;
+}
+
+.mybooks-list .card.horizontal .card-image {
+  max-width: 30%;
+}
+
+@media screen and (min-width: 480px) {
+  .mybooks-list .card.horizontal .card-image {
+    max-width: 20%;
+  }
+}
+
+.finished-book span.badge.new {
+  float: none;
+  padding: 11px 7px 9px;
+  display: inline-block;
+  height: 0;
+  position: absolute;
+  line-height: 0;
 }

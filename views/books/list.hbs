@@ -1,23 +1,27 @@
 {{> _searchbar}}
 
-<div class="total-read">
-  Total books: {{totalBooks}}
+<ul class="total-read">
+  <li>Current: {{currentTotal}}</li>
+  <li><i class="fal fa-minus" data-fa-transform="rotate-90 shrink-8"></i>
+  <li>Finished: {{finishedTotal}}</li>
+  <li><i class="fal fa-minus" data-fa-transform="rotate-90 shrink-8"></i>
+  <li>Total: {{totalBooks}}</li>
 </div>
 {{#each books}}
 <div class="col s12">
-  <div class="card horizontal valign-wrapper {{#if finishedDate}}finished-book{{/if}}">
+  <div class="card horizontal {{#if finishedDate}}finished-book{{/if}}">
     <div class="card-image">
-      <img src="{{cover}}">
+      <img src="{{cover}}" alt="{{title}}">
     </div>
     <div class="card-stacked">
       <div class="card-content">
-        <h5 class="header">{{#if finishedDate}}<i class="fal fa-book-heart"></i>{{/if}} {{title}}</h5>
+        <h5 class="header">{{title}} {{#if finishedDate}}<span class="new badge indigo darken-4" data-badge-caption="">finished</span>{{/if}}</h5>
         <p class="start-end-dates ">Started: {{moment startedDate 'MM/DD/YYYY'}}{{#if finishedDate}}
           <i class="fal fa-angle-double-right"></i> Finished: {{moment finishedDate 'MM/DD/YYYY'}}
         {{/if}}</p>
         <form action="/books/{{id}}?_method=PUT" method="post" class="finish-form">
           <input type="hidden" name="_method" value="PUT" />
-          <button class="btn btn-outline-info btn-sm btn-inline mb-0" type="submit">Finish Reading</button>
+          <button class="btn btn-outline-info btn-small btn-inline mb-0" type="submit">Finish Reading</button>
         </form>
         <form class="delete-book" method="post" action="/books/{{id}}?_method=DELETE">
           <input type="hidden" name="_method" value="DELETE" />
