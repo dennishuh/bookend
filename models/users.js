@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const pick = require('lodash/pick');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
@@ -46,7 +46,7 @@ UserSchema.methods.toJSON = function() {
   let user = this;
   let userObject = user.toObject();
 
-  return _.pick(userObject, ['_id', 'email', 'name']);
+  return pick(userObject, ['_id', 'email', 'name']);
 };
 
 UserSchema.methods.generateAuthToken = function() {
