@@ -1,0 +1,39 @@
+<div class="col s12">
+  <div class="card horizontal {{#if finishedDate}}finished-book{{else}}current-book{{/if}}">
+    <div class="card-image">
+      <img src="{{cover}}" alt="{{title}}">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <h5 class="header">{{title}} {{#if finishedDate}}<span class="new badge indigo darken-4" data-badge-caption="">finished</span>{{/if}}</h5>
+        <p class="start-end-dates ">Started: {{moment startedDate 'MM/DD/YYYY'}}{{#if finishedDate}}
+          <i class="fal fa-angle-double-right"></i> Finished: {{moment finishedDate 'MM/DD/YYYY'}}
+        {{/if}}</p>
+        <form action="/books/{{id}}?_method=PUT" method="post" class="finish-form">
+          <input type="hidden" name="_method" value="PUT" />
+          <button class="btn btn-outline-info btn-small btn-inline mb-0" type="submit">Finish Reading</button>
+        </form>
+        <form class="delete-book" method="post" action="/books/{{id}}?_method=DELETE">
+          <input type="hidden" name="_method" value="DELETE" />
+          <button class="btn pink lighten-1" type="submit"><i class="fal fa-times"></i></button>
+        </form>
+        {{#if finishedDate}}{{#unless note}}<a href="#" class="add-note">Add Note <i class="fal fa-comment-alt-lines" data-fa-transform="grow-4"></i></a>
+        <form method="POST" action="/books/{{id}}?_method=PUT" id="comment-form">
+          <a href="#" class="close-note-form right"><i class="fal fa-times"></i></a>
+          <input type="hidden" name="_method" value="PUT" />
+          <!-- <label for="review">Review</label> -->
+
+          <textarea placeholder="Add a note for future reference" name="note" class="materialize-textarea"></textarea>
+          <button type="submit" class="btn btn-outline-info btn-small">Add Note</button>
+        </form>
+        {{/unless}}
+        {{/if}}
+        {{#if note}}
+          <p class="notes"><i class="fal fa-comment-alt-lines"></i> {{note}}</p>
+        {{/if}}
+      </div>
+
+    </div>
+
+  </div>
+</div>

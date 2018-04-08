@@ -231,10 +231,15 @@ nav .brand-logo {
   text-align: right;
   bottom: 20px;
   right: 20px;
+  color: #466C7F;
 }
 
 #comment-form {
   display: none;
+}
+
+#comment-form .btn {
+  background-color: #466c7f !important;
 }
 
 .close-note-form {

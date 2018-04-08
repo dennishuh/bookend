@@ -78,7 +78,7 @@ router.get("/", ensureAuthenticated, (req, res) => {
       const currentTotal = currentlyReading.length || 0;
       const finishedTotal = finishedBooks.length || 0;
 
-      res.render("books/list", { books: currentBooks, finishedTotal, currentTotal, totalBooks, containerClass: 'mybooks-list' });
+      res.render("books/list", { currentlyReading, finishedBooks, finishedTotal, currentTotal, totalBooks, containerClass: 'mybooks-list' });
     });
 });
 

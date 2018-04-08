@@ -12,26 +12,26 @@ $(document).ready(function() {
     }
   });
 
-  const $finishedBook = $('.finished-book');
-  const $currentBook = $('.current-book');
+  const $finishedSection = $('.finished-reading-section');
+  const $currentSection = $('.currently-reading-section');
 
   $('.mybooks-list').on('click', 'a', function(e) {
     e.preventDefault();
     const $this = $(this);
 
     if ($this.hasClass('currently-reading')) {
-      $finishedBook.hide();
-      $currentBook.show();
+      $finishedSection.hide();
+      $currentSection.show();
     }
 
     if ($this.hasClass('finished-reading')) {
-      $finishedBook.show();
-      $currentBook.hide();
+      $finishedSection.show();
+      $currentSection.hide();
     }
 
     if ($this.hasClass('total-read')) {
-      $finishedBook.show();
-      $currentBook.show();
+      $finishedSection.show();
+      $currentSection.show();
     }
 
     if ($this.hasClass('add-note')) {
