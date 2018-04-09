@@ -233,7 +233,7 @@ nav .brand-logo {
   padding: 11px 7px 9px;
   display: inline-block;
   height: 0;
-  position: absolute;
+  margin: 0;
   line-height: 0;
 }
 
