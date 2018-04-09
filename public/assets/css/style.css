@@ -14,10 +14,17 @@ h5 {
 .chip {
   border-radius: 0;
   margin-bottom: 10px;
+  display: block;
+}
+
+@media screen and (min-width: 480px) {
+  .chip {
+    display: inline-block;
+  }
 }
 
 .card .card-content {
-    padding: 12px 24px;
+    padding: 12px;
     border-radius: 0 0 2px 2px;
 }
 
