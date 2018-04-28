@@ -28,29 +28,29 @@ mongoose
     console.log("MongoDB connected...");
   })
   .catch(err => console.log(err));
-
-hbs.registerHelper('moment', function(date, format) {
-  return moment(date).format(format);
-});
-
-hbs.registerHelper('timeDifference', function(fromDate, toDate) {
-  return moment(toDate).from(fromDate, true);
-})
-
-hbs.registerHelper('truncate', function(str, len) {
-  if (!str) {
-    return;
-  }
-    if (str.length > len && str.length > 0) {
-      console.log('truncating');
-      var new_str = str + " ";
-      new_str = str.substr(0, len);
-      new_str = str.substr(0, new_str.lastIndexOf(" "));
-      new_str = (new_str.length > 0) ? new_str : str.substr(0, len);
-      return new_str + '...';
-    }
-    return str;
-  })
+//
+// hbs.registerHelper('moment', function(date, format) {
+//   return moment(date).format(format);
+// });
+//
+// hbs.registerHelper('timeDifference', function(fromDate, toDate) {
+//   return moment(toDate).from(fromDate, true);
+// })
+//
+// hbs.registerHelper('truncate', function(str, len) {
+//   if (!str) {
+//     return;
+//   }
+//     if (str.length > len && str.length > 0) {
+//       console.log('truncating');
+//       var new_str = str + " ";
+//       new_str = str.substr(0, len);
+//       new_str = str.substr(0, new_str.lastIndexOf(" "));
+//       new_str = (new_str.length > 0) ? new_str : str.substr(0, len);
+//       return new_str + '...';
+//     }
+//     return str;
+//   })
 
 // Use `.hbs` for extensions and find partials in `views/partials`.
 app.engine(
@@ -92,25 +92,20 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get("/", (req, res) => {
-  if (req.isAuthenticated()) {
-    res.redirect('/books');
-  } else {
-    const data = {
-      title: "Welcome!"
-    };
-    res.render("index", data);
-  }
-});
+
 
 app.get("/about", (req, res) => {
   res.render("about");
 });
 
 // Use routes
-app.use('/books', books);
-app.use('/list', list);
+//app.use('/books', books);
+//app.use('/list', list);
 app.use('/users', users);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 app.listen(PORT, () => {
   console.log("Server started on " + PORT);
