@@ -101,7 +101,7 @@ app.get("/about", (req, res) => {
 // Use routes
 //app.use('/books', books);
 //app.use('/list', list);
-app.use('/users', users);
+app.use('/api/users', users);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
