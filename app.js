@@ -25,7 +25,6 @@ const list = require('./routes/list');
 mongoose
 	.connect(keys.mongoURI)
 	.then(() => {
-		console.log('mongoURI', keys.mongoURI);
 		console.log('MongoDB connected...');
 	})
 	.catch((err) => console.log(err));
