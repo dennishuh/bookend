@@ -2,3 +2,4 @@ config/config
 node_modules
 dev.js
 .DS_Store
+.env

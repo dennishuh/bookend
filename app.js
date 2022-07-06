@@ -8,11 +8,11 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const moment = require('moment');
-const keys = require('./config/keys');
+const dotenv = require('dotenv');
 
 const { ensureAuthenticated } = require('./helpers/auth');
 
-const PORT = process.env.PORT || 5000;
+dotenv.config();
 const app = express();
 
 require('./config/passport')(passport);
@@ -22,8 +22,10 @@ const books = require('./routes/books');
 const users = require('./routes/users');
 const list = require('./routes/list');
 
+console.log('process.env.MONGO_URI', process.env.MONGO_URI);
+
 mongoose
-	.connect(keys.mongoURI)
+	.connect(process.env.MONGO_URI)
 	.then(() => {
 		console.log('MongoDB connected...');
 	})
@@ -113,6 +115,6 @@ app.use('/books', books);
 app.use('/list', list);
 app.use('/users', users);
 
-app.listen(PORT, () => {
-	console.log('Server started on ' + PORT);
+app.listen(process.env.PORT, () => {
+	console.log('Server started on ' + process.env.PORT);
 });
