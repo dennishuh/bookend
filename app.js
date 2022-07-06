@@ -22,8 +22,6 @@ const books = require('./routes/books');
 const users = require('./routes/users');
 const list = require('./routes/list');
 
-console.log('process.env.MONGO_URI', process.env.MONGO_URI);
-
 mongoose
 	.connect(process.env.MONGO_URI)
 	.then(() => {
