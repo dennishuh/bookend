@@ -25,6 +25,8 @@ module.exports = {
 };
 ```
 
+For Prod deployment you need to update env variables in your deployment app
+
 ### Installing
 
 Install all dependencies
@@ -34,10 +36,10 @@ npm i
 ```
 
 ## Built With
-* Node
-* Express
-* Handlebars
 
+- Node
+- Express
+- Handlebars
 
 ## Versioning
 
@@ -45,7 +47,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Dennis Huh** - *Initial work* - [Dennis Huh](https://github.com/dennishuh)
+- **Dennis Huh** - _Initial work_ - [Dennis Huh](https://github.com/dennishuh)
 
 ## License
 
